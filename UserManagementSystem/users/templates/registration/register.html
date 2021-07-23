@@ -1,0 +1,35 @@
+{% extends 'home.html' %}
+{% block content %}
+
+<section class="row justify-content-center mt-5">
+    <section class="col-12 col-sm-6 col-md-4">
+
+        <form action="" method="POST" class="form-container" novalidate>
+            <h2>Sign Up</h2><br>
+            {% if messages %}
+            <div class="alert alert-success h5">
+                <strong>
+                    {% for message in messages %}
+                    <small {% if message.tags %} class="{{message.tags}}" {% endif %}> {{message}} </small>
+                    {% endfor %}
+                </strong>
+                {% endif %}
+            </div>
+            {% csrf_token%}
+            {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+            {{error}}<br>
+            {% endfor %}
+            {% endif %}
+            {% for f in form %}
+            {{f.label_tag}} {{f}} {{f.errors|striptags}} <br><br>
+            {% endfor %}
+
+            <button type="submit" class="btn btn-success ">Submit</button>
+            <br><br>
+            <a href="{% url 'login' %}" class="btn btn-primary">Login to continue</a>
+        </form>
+    </section>
+</section>
+
+{% endblock %}

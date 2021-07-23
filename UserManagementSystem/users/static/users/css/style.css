@@ -1,0 +1,37 @@
+body{
+	background: #383a3d;
+	padding-top: 18vh;
+}
+
+form{
+	background: #fff;
+}
+
+.form-container{
+	border-radius: 10px;
+	padding: 28px;
+}
+btn{
+font-family:sans-serif;
+font-weight:bold;
+font-size:20px;
+}
+
+.Error{
+    color:red;
+}
+<!--body-->
+<!--{-->
+<!--background-image: url("")-->
+<!--}-->
+
+h1{
+color:white;
+ position: absolute;
+  right: 420px;
+  top: 70px;
+}
+
+a {
+  color: blue;
+}

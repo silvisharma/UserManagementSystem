@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Change Password</title>
+
+</head>
+<body>
+<div class="mt-5">
+<section class="row justify-content-center">
+    <section class="col-12 col-sm-6 col-md-4">
+
+        <form action="" method="POST">
+            <h2>Change Password</h2><br>
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+            <p>{{error}}</p>
+            {% endfor %}
+            {% endif %}
+            {% for f in form %}
+            {{f.label_tag}} {{f}} {{f.errors|striptags}} <br><br>
+            {% endfor %}
+            <button type="submit" class="btn btn-success" style="border-radius:4px; width:30%; ">Save</button>
+        </form>
+        <br>
+        <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a><br><br>
+        <a class="btn btn-primary" href="{% url 'home' %}">Home</a>
+    </section>
+</section>
+    </div>
+</body>
+</html>

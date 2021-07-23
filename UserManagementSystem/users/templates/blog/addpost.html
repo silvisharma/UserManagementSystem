@@ -1,0 +1,16 @@
+{% extends 'home.html' %}
+{% block content %}
+<div class="container">
+    <h3 class="mt-5 ms-3">Add New Post</h3>
+    <div class="col col-2 ">
+        <div class="form-group form-control-lg  w-100">
+            <form action="" method="POST" novalidate>
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit" class="btn btn-success btn-md">Add</button>
+                <a href="{% url 'home' %}" class="btn btn-danger btn-md">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

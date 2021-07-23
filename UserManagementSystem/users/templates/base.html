@@ -1,0 +1,82 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link href="{% static 'css/bootstrap.css' %}">
+    <style>
+    body{
+	background: #383a3d;
+	padding-top: 18vh;
+}
+
+form{
+	background: #fff;
+}
+
+.form-container{
+	border-radius: 10px;
+	padding: 28px;
+}
+btn{
+font-family:sans-serif;
+font-weight:bold;
+font-size:20px;
+}
+
+.Error{
+    color:red;
+}
+<!--body-->
+<!--{-->
+<!--background-image: url("")-->
+<!--}-->
+
+h1{
+color:white;
+ position: absolute;
+  right: 420px;
+  top: 70px;
+}
+
+a {
+  color: blue;
+}
+
+
+    </style>
+
+</head>
+<body>
+    <h1 class="text-center" >USER MANAGEMENT SYSTEM</h1><br><br>
+
+<div>
+
+    <section class="row justify-content-center">
+        <section class="col-12 col-sm-6 col-md-4">
+
+            <form method="POST" class="form-container"><br>
+                {% csrf_token %}
+
+                <a href="{% url 'register' %}" class="btn btn-primary btn-lg w-100 border border-dark">Sign
+                    Up</a><br><br>
+                <a href="{% url 'login' %}" class="btn btn-primary btn-lg w-100 border border-dark">Login</a><br><br>
+
+
+            </form>
+        </section>
+    </section>
+</div>
+
+<script src="{% static 'users/js/jquery.js' %}"></script>
+<script src="{% static 'users/js/popper.js' %}"></script>
+<script src="{% static 'users/js/bootstrap.js' %}"></script>
+<script src="{% static 'users/js/bootstrap.min.js' %}"></script>
+
+</body>
+</html>

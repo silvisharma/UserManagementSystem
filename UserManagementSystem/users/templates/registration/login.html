@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+    body{
+	background: #383a3d;
+	padding-top: 18vh;
+}
+/* set form background colour*/
+form{
+	background: #fff;
+}
+/* set padding and size of th form */
+.form-container{
+	border-radius: 10px;
+	padding: 28px;
+}
+
+a:link, a:visited {
+  color: black;
+}
+label{
+color: black;
+}
+
+.Error{
+    color:red;
+}
+
+
+
+
+
+    </style>
+
+</head>
+<body>
+<section class="row justify-content-center">
+    <section class="col-12 col-sm-6 col-md-4">
+
+        <form action="" method="POST" class="form-container text-center">
+            {% csrf_token %}
+
+            <h1>Login</h1>
+            <br>
+
+            {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+            <p class="Error">{{error}}</p>
+            {% endfor %}
+            {% endif %}
+            {% for f in form %}
+            {{f.label_tag}} {{f}} {{f.errors|striptags}} <br><br>
+            {% endfor %}
+
+
+            <button type="submit" class="btn btn-success btn-lg">Login</button>
+            <br><br>
+
+            <a style="font-size:20px" href="{% url 'password_reset' %}">Forgot Passsword?</a>
+
+        </form>
+    </section>
+</section>
+</body>
+</html>
