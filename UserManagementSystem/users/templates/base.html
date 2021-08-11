@@ -53,6 +53,7 @@ a {
 
 </head>
 <body>
+{% block content %}
     <h1 class="text-center" >USER MANAGEMENT SYSTEM</h1><br><br>
 
 <div>
@@ -77,6 +78,6 @@ a {
 <script src="{% static 'users/js/popper.js' %}"></script>
 <script src="{% static 'users/js/bootstrap.js' %}"></script>
 <script src="{% static 'users/js/bootstrap.min.js' %}"></script>
-
+{% endblock %}
 </body>
 </html>

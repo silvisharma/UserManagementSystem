@@ -2,11 +2,11 @@
 {% block content %}
 {% if messages %}
 <div class="alert alert-success py-1 w-100">
-    <strong>
+
         {% for message in messages %}
         <small {% if message.tags %} class="{{message.tags}}" {% endif %}> {{message}} </small>
         {% endfor %}
-    </strong>
+
     {% endif %}
 </div>
 <a href="{% url 'home' %}" class="mt-2 text-dark px-4">Home</a>
@@ -14,6 +14,7 @@
 {% if perms.admin.delete_blog%}
 
 <a style="margin-left:280px;" href="{% url 'adduser' %}" class="btn btn-success">Add User</a><br><br>
+
 <center>
     <table style="width:60%; " class="table table-hover table-bordered table-dark">
         <thead>

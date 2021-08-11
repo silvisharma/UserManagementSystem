@@ -24,15 +24,15 @@ font-weight:bold; position: absolute; left: 650px; width:100px;
 <body>
 {% block content %}
 <nav class="navbar navbar-expand-md py-0 navbar-dark bg-dark">
-    <p class="navbar-brand mb-2 mx-2 navbar-text text-right py-1 lead">Hello, {{request.user.username}}</p>
+    <p class="navbar-brand mb-2 mx-2 navbar-text text-right py-1 ms-3 lead">Hello, {{request.user.username}}</p>
     <ul class="navbar-nav ms-auto">
         <li class="nav-item" style="list-style: none;">
-            <a class="btn btn-primary btn-sm text-white" href="{% url 'profile' %}">Edit Profile</a>
+            <a class="btn btn-light btn-sm text-dark" href="{% url 'profile' %}">Edit Profile</a>
             {% if users != None%}
-            <a class="btn btn-primary btn-sm text-white" href="{% url 'show' %}">Manage Users</a>
+            <a class="btn btn-light btn-sm text-dark" href="{% url 'show' %}">Manage Users</a>
             {% endif %}
-            <a class="btn btn-primary btn-sm text-white" href="{% url 'changepwd' %}">Change Password</a>
-            <a class="btn btn-danger btn-sm text-white" href="{% url 'logout' %}">Logout</a>
+            <a class="btn btn-light btn-sm text-dark" href="{% url 'changepwd' %}">Change Password</a>
+            <a class="btn btn-link text-white" href="{% url 'logout' %}">Logout</a>
         </li>
     </ul>
 </nav>
@@ -46,19 +46,20 @@ font-weight:bold; position: absolute; left: 650px; width:100px;
 
     {% endif %}
 </div>
-<h2 class="display-5 text-weight-bold mt-2 text-center">
+<div class="container">
+<h2 class="display-4 text-weight-bold mt-2 ">
     Welcome to User Management System {{name}}</h2>
 <br><br>
-<div class="container">
-    <a href="{% url 'addpost' %}" class="btn btn-success btn-md">Add New Post</a><br><br>
-</div>
+
+    <a href="{% url 'addpost' %}" class="btn btn-success text-white btn-md">Add New Post</a><br><br>
+
 {% for post in posts%}
 <div class="container border border-primary bg-dark text-white ">
 
     <h1 class="display-4">{{post.title}}</h1>
-    <p class="lead">{{post.desc}}</p>
+    <p class="lead">{{post.desc}}</p><br>
 
-    <a href="{% url 'editpost' post.id %}" class="btn btn-warning btn-md">Edit</a>
+    <a href="{% url 'editpost' post.id %}" class="btn btn-light btn-md">Edit</a>
     {% if perms.users.delete_blog%}
     <form action="{% url 'delpost' post.id %}" method="POST" class="d-inline">
         {% csrf_token %}
@@ -69,16 +70,18 @@ font-weight:bold; position: absolute; left: 650px; width:100px;
 <br>
 {% endfor %}
 
-<div style="font-size:25px;margin-left:120px;">
+
     {% if users != None%}
-    <h5 class="display-7 text-weight-bold">Hello Admin! Here is a list of all users. You can view their information by
+    <h5 class="text-weight-bold">Hello Admin! Here is a list of all users. You can view their information by
         clicking on them.</h5>
     {% for user in users %}
-    <a href="{% url 'detail' user.id %}">{{user.username}}</a><br>
+    <a class="text-dark " href="{% url 'detail' user.id %}">{{user.username}}</a><br>
     {% endfor %}
 
     {% endif %}
-</div>
+
+        </div>
+
 {% endblock %}
 </body>
 </html>

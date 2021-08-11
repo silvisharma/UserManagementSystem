@@ -1,35 +1,39 @@
 {% extends 'home.html' %}
+
 {% block content %}
 
-<section class="row justify-content-center mt-5">
-    <section class="col-12 col-sm-6 col-md-4">
+<div class="row justify-content-center bg-dark ">
+    <section class="col-12 col-sm-12  col-md-4 mb-2 pb-5">
+        <div class="form-control form-control-md my-5 pb-5">
 
-        <form action="" method="POST" class="form-container" novalidate>
-            <h2>Sign Up</h2><br>
-            {% if messages %}
-            <div class="alert alert-success h5">
-                <strong>
-                    {% for message in messages %}
-                    <small {% if message.tags %} class="{{message.tags}}" {% endif %}> {{message}} </small>
-                    {% endfor %}
-                </strong>
-                {% endif %}
+            <form action="" method="POST" novalidate>
+
+                <h2>Sign Up</h2><br>
+{% for field in form %}
+    <div class="row ">
+       <div class="col-md-6">
+        {{ field.label_tag }}
+       </div>
+        <div style="width:50px">
+         {{ field }}<br><br>
+            <div style="width:180px;">
+            {% for error in field.errors %}
+            <div class="alert alert-danger  py-1 col-xs-1">{{error}}</div>
+          {% endfor %}
             </div>
-            {% csrf_token%}
-            {% if form.non_field_errors %}
-            {% for error in form.non_field_errors %}
-            {{error}}<br>
-            {% endfor %}
-            {% endif %}
-            {% for f in form %}
-            {{f.label_tag}} {{f}} {{f.errors|striptags}} <br><br>
-            {% endfor %}
+       </div>
 
-            <button type="submit" class="btn btn-success ">Submit</button>
-            <br><br>
+
+    </div>
+
+ {% endfor %}
+                {% csrf_token%}
+
+                <button type="submit" class="btn btn-success ">Submit</button>
+                <br><br>
             <a href="{% url 'login' %}" class="btn btn-primary">Login to continue</a>
         </form>
+        </div>
     </section>
-</section>
-
+</div>
 {% endblock %}

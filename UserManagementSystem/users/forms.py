@@ -6,13 +6,13 @@ from .models import Blog
 
 
 class SignUpForm(UserCreationForm):
-
     fullname = forms.CharField(label="Full name")
 
     class Meta:
         model = User
         fields = ['username', 'fullname', 'email']
         labels = {'email': 'Email', 'password2': 'Confirm Password'}
+
 
 
 class EditUserForm(UserChangeForm):
